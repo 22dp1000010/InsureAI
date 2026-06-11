@@ -1,23 +1,13 @@
-import os
-
 from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from fastapi import Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from fastapi.staticfiles import StaticFiles
-
-
 from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
 
 load_dotenv()
 
 app = FastAPI()
-
-
 
 app.add_middleware(
     CORSMiddleware,
@@ -27,51 +17,28 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load configuration
-ENDPOINT = os.getenv("PROJECT_ENDPOINT")
-AGENT_NAME = os.getenv("AGENT_NAME")
-AGENT_VERSION = os.getenv("AGENT_VERSION")
+PROJECT_ENDPOINT = "https://vattipallimohith-4642-resource.services.ai.azure.com/api/projects/vattipallimohith-4642"
+AGENT_NAME = "Insure-AI"
+AGENT_VERSION = "5"
 
-# Initialize Foundry client
 project_client = AIProjectClient(
-    endpoint=ENDPOINT,
+    endpoint=PROJECT_ENDPOINT,
     credential=DefaultAzureCredential(),
 )
-
 openai_client = project_client.get_openai_client()
-
 
 class ChatRequest(BaseModel):
     message: str
 
-# Serve static files (CSS, JS, images)
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Jinja templates
-templates = Jinja2Templates(directory="templates")
-
-
-@app.get("/", response_class=HTMLResponse)
-async def home(request: Request):
-    return templates.TemplateResponse(
-        request=request,
-        name="index.html",
-        context={
-            "app_name": "Insure AI"
-        }
-    )
-
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 @app.post("/chat")
 def chat(request: ChatRequest):
     try:
         response = openai_client.responses.create(
-            input=[
-                {
-                    "role": "user",
-                    "content": request.message,
-                }
-            ],
+            input=[{"role": "user", "content": request.message}],
             extra_body={
                 "agent_reference": {
                     "name": AGENT_NAME,
@@ -80,12 +47,6 @@ def chat(request: ChatRequest):
                 }
             },
         )
-
-        return {
-            "response": response.output_text
-        }
-
+        return {"response": response.output_text}
     except Exception as e:
-        return {
-            "error": str(e)
-        }
+        return {"error": str(e)}

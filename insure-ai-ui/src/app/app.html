@@ -1,0 +1,43 @@
+<div class="page">
+  <div class="chat-shell">
+    <div class="chat-topbar">
+      <div class="logo">IA</div>
+      <div class="title-group">
+        <h1>Insure AI</h1>
+        <span>Smart insurance answers</span>
+      </div>
+    </div>
+
+    <div class="chat-box">
+      <div *ngIf="messages.length === 0" class="empty-state">
+        <div class="empty-icon">🛡</div>
+        <h2>Search insurance questions instantly</h2>
+        <p>
+          Ask about claims, coverage, premiums, deductibles, renewals, and policy details.
+        </p>
+      </div>
+
+      <div *ngFor="let item of messages" class="message-row" [ngClass]="item.role">
+        <div class="message-label">
+          {{ item.role === 'user' ? 'You' : 'Insure AI' }}
+        </div>
+        <div class="message-bubble">
+          {{ item.text }}
+        </div>
+      </div>
+    </div>
+
+    <div class="search-panel">
+      <div class="search-box">
+        <input
+          [(ngModel)]="message"
+          placeholder="Ask about insurance coverage, claims, or premiums..."
+          (keyup.enter)="sendMessage()"
+        />
+        <button (click)="sendMessage()" [disabled]="loading">
+          {{ loading ? 'Sending...' : 'Send' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
