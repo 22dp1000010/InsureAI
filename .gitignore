@@ -1,5 +1,1 @@
 .env
-# filename: .gitignore
-__pycache__/
-*.pyc
-.venv/
