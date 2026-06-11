@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
+import os
 
 load_dotenv()
 
@@ -26,7 +27,7 @@ AGENT_VERSION = os.getenv("AGENT_VERSION")
 API_KEY = os.getenv("AZURE_API_KEY")
 
 project_client = AIProjectClient(
-    endpoint=PROJECT_ENDPOINT,
+    endpoint=ENDPOINT,
     credential=DefaultAzureCredential(),
 )
 openai_client = project_client.get_openai_client()
