@@ -17,15 +17,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-PROJECT_ENDPOINT = "https://vattipallimohith-4642-resource.services.ai.azure.com/api/projects/vattipallimohith-4642"
-AGENT_NAME = "Insure-AI"
-AGENT_VERSION = "5"
+# Load configuration
+ENDPOINT = os.getenv("PROJECT_ENDPOINT")
+AGENT_NAME = os.getenv("AGENT_NAME")
+AGENT_VERSION = os.getenv("AGENT_VERSION")
+
+# Initialize Foundry client
+API_KEY = os.getenv("AZURE_API_KEY")
 
 project_client = AIProjectClient(
     endpoint=PROJECT_ENDPOINT,
     credential=DefaultAzureCredential(),
 )
 openai_client = project_client.get_openai_client()
+
+
 
 class ChatRequest(BaseModel):
     message: str
@@ -49,4 +55,9 @@ def chat(request: ChatRequest):
         )
         return {"response": response.output_text}
     except Exception as e:
+        print("ERROR:", e)
         return {"error": str(e)}
+
+"""@app.post("/chat")
+def chat(request: ChatRequest):
+    return {"response": "Backend working!"}"""
