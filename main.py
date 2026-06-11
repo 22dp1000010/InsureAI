@@ -33,12 +33,15 @@ AGENT_NAME = os.getenv("AGENT_NAME")
 AGENT_VERSION = os.getenv("AGENT_VERSION")
 
 # Initialize Foundry client
+API_KEY = os.getenv("AZURE_API_KEY")
+
 project_client = AIProjectClient(
     endpoint=ENDPOINT,
     credential=DefaultAzureCredential(),
 )
 
 openai_client = project_client.get_openai_client()
+
 
 
 class ChatRequest(BaseModel):
@@ -86,6 +89,9 @@ def chat(request: ChatRequest):
         }
 
     except Exception as e:
-        return {
-            "error": str(e)
-        }
+        print("ERROR:", e)
+        return {"error": str(e)}
+
+"""@app.post("/chat")
+def chat(request: ChatRequest):
+    return {"response": "Backend working!"}"""

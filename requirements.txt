@@ -4,6 +4,7 @@ python-multipart
 fastapi
 python-dotenv
 azure-ai-projects>=2.1.0
+azure-core
 azure-identity
 jinja2
 pytest
