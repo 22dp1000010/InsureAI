@@ -96,7 +96,6 @@ It's recommended to run the backend and frontend in separate terminal windows:
 
 **Terminal 1 - Backend**:
 ```bash
-cd backend
 uvicorn main:app --reload
 ```
 
