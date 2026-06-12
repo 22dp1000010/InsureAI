@@ -1,10 +1,22 @@
 # InsureAI
 
-InsureAI is a full-stack application that leverages AI and machine learning to provide intelligent insurance solutions. This project combines a Python backend with an Angular-based frontend for a seamless user experience.
+InsureAI is a full-stack application that leverages Microsoft Foundry Agent to provide intelligent insurance solutions. This project combines a Python FastAPI backend with an Angular-based frontend for a seamless user experience.
+This project is done as part of Agents League Hackathon.
+
+Contributors for this repository:
+
+1. Gayathri Bandikatla
+2. Mohith Vattipalli
+
+The appplication is deployed in Azure. Services used are -
+
+1. App service
+2. Microsoft Foundry
+3. IAM
 
 ## Tech Stack
 
-- **Backend**: Python with Uvicorn
+- **Backend**: FastAPI
 - **Frontend**: Angular (TypeScript, HTML, CSS)
 - **Architecture**: Full-stack web application
 
@@ -12,7 +24,7 @@ InsureAI is a full-stack application that leverages AI and machine learning to p
 
 ```
 InsureAI/
-├── backend/                 # Python backend with FastAPI/Uvicorn
+├── main.py                 # Python backend with FastAPI/Uvicorn
 ├── insure-ai-ui/           # Angular frontend application
 └── README.md
 ```
@@ -21,8 +33,8 @@ InsureAI/
 
 Before you begin, ensure you have the following installed:
 
-- **Python** (3.8 or higher)
-- **Node.js** (v18 or higher)
+- **Python** (3.11 or higher)
+- **Node.js** (v22 or higher)
 - **npm** (comes with Node.js)
 - **Angular CLI** (install globally: `npm install -g @angular/cli`)
 
@@ -34,20 +46,24 @@ Before you begin, ensure you have the following installed:
    ```bash
    cd backend
    ```
+2. **Create a virtual environment**:
+   ```bash
+   python -m venv env
+   ```
 
-2. **Install Python dependencies**:
+3. **Install Python dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Start the development server**:
+4. **Start the development server**:
    ```bash
    uvicorn main:app --reload
    ```
 
    The backend API will be available at `http://localhost:8000`
 
-4. **API Documentation**:
+5. **API Documentation**:
    - Swagger UI: `http://localhost:8000/docs`
    - ReDoc: `http://localhost:8000/redoc`
 
@@ -127,7 +143,7 @@ export const environment = {
 ## Building for Production
 
 ### Backend
-The backend is ready to be deployed with a production ASGI server like Gunicorn with Uvicorn workers.
+The backend is deployed to Azure using IAM Managed Identity.
 
 ### Frontend
 Build the frontend for production:
