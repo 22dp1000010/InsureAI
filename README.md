@@ -1,6 +1,6 @@
 # InsureAI
 
-InsureAI is a full-stack application that leverages Microsoft Foundry Agent to provide intelligent insurance solutions. This project combines a Python FastAPI backend with an Angular-based frontend for a seamless user experience.
+InsureAI is a full-stack application that leverages Microsoft Foundry Agent to provide intelligent insurance solutions. This project combines a Python FastAPI backend with an Angular-based frontend[...]
 This project is done as part of Agents League Hackathon.
 
 Contributors for this repository:
@@ -28,6 +28,12 @@ InsureAI/
 ├── insure-ai-ui/           # Angular frontend application
 └── README.md
 ```
+
+## Demo
+
+Watch the demo video to see InsureAI in action:
+
+[🎬 View Demo Video](https://drive.google.com/file/d/1PrjewLlXRxSjCvWBiN2MOu6P76Dyob0U/view?usp=sharing)
 
 ## Prerequisites
 
