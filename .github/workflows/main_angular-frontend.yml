@@ -13,9 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read #This is required for actions/checkout
-      
-   defaults:
+      contents: read
+
+    defaults:
       run:
         working-directory: ./insure-ai-ui
         
