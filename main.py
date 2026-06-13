@@ -12,7 +12,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://angular-frontend-fyfna5angzbwgzdt.westeurope-01.azurewebsites.net/"],
+    allow_origins=["https://angular-frontend-fyfna5angzbwgzdt.westeurope-01.azurewebsites.net"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
