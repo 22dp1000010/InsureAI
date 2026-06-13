@@ -17,7 +17,7 @@ jobs:
       
     defaults:
       run:
-        working-directory: ./insurance-ai-ui
+        working-directory: ./insure-ai-ui
         
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: insurance-ai-ui/dist
+          path: insure-ai-ui/dist
 
   deploy:
     runs-on: ubuntu-latest
