@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../environment/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AppComponent {
   private http = inject(HttpClient);
-  private baseUrl = 'http://127.0.0.1:8000';
+  private baseUrl = environment.apiBaseUrl;
 
   message = '';
   loading = false;
