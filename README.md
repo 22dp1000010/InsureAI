@@ -67,11 +67,10 @@ Before you begin, ensure you have the following installed:
    uvicorn main:app --reload
    ```
 
-   The backend API will be available at `http://localhost:8000`
+   The backend API will be available at `https://insure-ai-d3hwb8e6gfcra0dm.westeurope-01.azurewebsites.net/docs`
 
 5. **API Documentation**:
-   - Swagger UI: `http://localhost:8000/docs`
-   - ReDoc: `http://localhost:8000/redoc`
+   - Swagger UI: `https://insure-ai-d3hwb8e6gfcra0dm.westeurope-01.azurewebsites.net/docs`
 
 ### Frontend Setup
 
@@ -90,7 +89,7 @@ Before you begin, ensure you have the following installed:
    ng serve
    ```
 
-   The frontend application will be available at `http://localhost:4200`
+   The frontend application will be available at `https://angular-frontend-fyfna5angzbwgzdt.westeurope-01.azurewebsites.net/`
 
    The application will automatically reload whenever you modify any of the source files.
 
@@ -140,8 +139,8 @@ The frontend connects to the backend API. Make sure to configure the API endpoin
 Example:
 ```typescript
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8000'
+  production: true,
+  apiUrl: 'https://insure-ai-d3hwb8e6gfcra0dm.westeurope-01.azurewebsites.net/docs'
 };
 ```
 
@@ -164,8 +163,6 @@ The build artifacts will be stored in the `dist/` directory.
 - **Backend (Port 8000)**: Change the port in the startup command: `uvicorn main:app --reload --port 8001`
 - **Frontend (Port 4200)**: Use `ng serve --port 4201`
 
-### CORS Issues
-If you encounter CORS errors, ensure your backend is configured to allow requests from `http://localhost:4200`.
 
 ## Contributing
 
@@ -174,9 +171,6 @@ If you encounter CORS errors, ensure your backend is configured to allow request
 3. Test thoroughly
 4. Submit a pull request
 
-## License
-
-[Add your license information here]
 
 ## Support
 
